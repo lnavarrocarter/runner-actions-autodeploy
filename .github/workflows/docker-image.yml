@@ -13,13 +13,14 @@ jobs:
     - name: Check enviroments steps
       uses: cschleiden/replace-tokens@v1
       with:
-        tokenPrefix: '#{'
-        tokenSuffix: '}#'
-        files: '["Dockerfile"]'   
+       tokenPrefix: '#{'
+       tokenSuffix: '}#'
+       files: '["**/*"]'   
       env:
-        GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
-        GITHUB_USER: ${{secrets.GH_USER}}
-        GITHUB_REPOSITORY : ${{secrets.GH_REPOSITORY}}
+       GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
+       GITHUB_USER: ${{secrets.GH_USER}}
+       GITHUB_REPOSITORY : ${{secrets.GH_REPOSITORY}}
+       GITHUB_VERSION: 2.285.1
         
         
     - uses: actions/checkout@v2
