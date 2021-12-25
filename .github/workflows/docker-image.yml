@@ -17,9 +17,9 @@ jobs:
         tokenSuffix: '}#'
         files: '["Dockerfile"]'   
       env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        GITHUB_USER: ${{secrets.GITHUB_USER}}
-        GITHUB_REPOSITORY : ${{secrets.GITHUB_REPOSITORY}}
+        GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
+        GITHUB_USER: ${{secrets.GH_USER}}
+        GITHUB_REPOSITORY : ${{secrets.GH_REPOSITORY}}
         
         
     - uses: actions/checkout@v2
