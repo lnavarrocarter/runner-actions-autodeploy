@@ -9,6 +9,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    
+    - name: Check enviroments steps
+      uses: cschleiden/replace-tokens@v1
+      with:
+        tokenPrefix: '#{'
+        tokenSuffix: '}#'
+        files: '["Dockerfile"]'   
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        GITHUB_USER: ${{secrets.GITHUB_USER}}
+        GITHUB_REPOSITORY : ${{secrets.GITHUB_REPOSITORY}}
+        
+        
     - uses: actions/checkout@v2
     - name: Build the Docker image push DOCKER HUB
       env:
@@ -20,4 +33,6 @@ jobs:
       run: |
         docker login -u $USER --password $TOKEN
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+        docker push $REGISTRY/$REPOSITORY:$IMAGE_TA
+        
+    
