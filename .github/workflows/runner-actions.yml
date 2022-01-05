@@ -7,15 +7,18 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-    
-    - name: Check enviroments steps
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies token
       uses: cschleiden/replace-tokens@v1
       with:
        tokenPrefix: '#{'
        tokenSuffix: '}#'
-       files: ['Dockerfile']   
+       files: 'Dockerfile'   
       env:
        GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
        GITHUB_USER: ${{secrets.GH_USER}}
@@ -23,7 +26,6 @@ jobs:
        GITHUB_VERSION: 2.285.1
         
         
-    - uses: actions/checkout@v2
     - name: Build the Docker image push DOCKER HUB
       env:
         REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
