@@ -1,7 +1,7 @@
 name: Runner Deploy actions
 
 on:
-  pull_request:
+  push:
     branches: [ main ]
   workflow_dispatch:
 
@@ -15,7 +15,7 @@ jobs:
       with:
        tokenPrefix: '#{'
        tokenSuffix: '}#'
-       files: 'Dockerfile'   
+       files: ['Dockerfile']   
       env:
        GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
        GITHUB_USER: ${{secrets.GH_USER}}
